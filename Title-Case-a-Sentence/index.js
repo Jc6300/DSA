@@ -16,4 +16,4 @@ function titleCase(str) {
 	// Join the words back into a string
 	return words.join(" ");
 }
-// Two different answers
+// Two different answers to solve the same problem
