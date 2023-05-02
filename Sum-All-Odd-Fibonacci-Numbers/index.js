@@ -14,4 +14,4 @@ function sumFibs(num) {
 	return sum;
 }
 
-sumFibs(4);
+console.log(sumFibs(4));
