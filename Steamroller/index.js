@@ -9,5 +9,4 @@ function steamrollArray(arr) {
 	});
 	return flattenedArray;
 }
-
 steamrollArray([1, [2], [3, [[4]]]]);
