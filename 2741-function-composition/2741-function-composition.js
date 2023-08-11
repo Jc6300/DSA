@@ -4,8 +4,8 @@
  */
 
 
-function compose(func){
-    return x => func.reduceRight((acc,fn) => fn(acc), x)
+function compose(functions){
+return functions.reduce((curr, prev) => x => curr(prev(x)), x => x)
 }
 /**
  * const fn = compose([x => x + 1, x => 2 * x])
