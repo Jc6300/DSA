@@ -6,7 +6,7 @@ function Accumulation(arr){
     return arr.reduce((a,b)=>a+b);  
 }
 
-var pivotIndex = function(nums) {
+const pivotIndex = function(nums) {
     
 
     // Initialization:
