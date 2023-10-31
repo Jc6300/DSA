@@ -3,13 +3,16 @@
  * @param {number} target
  * @return {number[]}
  */
-function twoSum(nums, target) {
-    const map = new Map();
-    for(let i = 0; i < nums.length; i++){
-        const complement = target - nums[i];
-        if(map.has(complement)){
-            return [map.get(complement), i]
+const twoSum =(nums, target) =>{
+    let mp = new Map()
+    
+    for (let i = 0; i < nums.length; i++) {
+        let diff = target - nums[i]
+        
+        if (mp.has(diff)) {
+            return [i, mp.get(diff)]
         }
-        map.set(nums[i], i)
+        
+        mp.set(nums[i], i)
     }
 };
