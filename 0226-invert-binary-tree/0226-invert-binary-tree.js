@@ -10,13 +10,22 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
-const invertTree = (root) => {
+
+
+
+function TreeNode(val, left, right) {
+    this.val = (val===undefined ? 0 : val)
+    this.left = (left===undefined ? null : left)
+    this.right = (right===undefined ? null : right)
+}
+
+var invertTree = function(root) {
     if (root === null) {
         return null;
     }
-
-    // Swap the left and right subtrees
-    [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
-
+    var right = invertTree(root.right);
+    var left = invertTree(root.left);
+    root.left = right;
+    root.right = left;
     return root;
 };
