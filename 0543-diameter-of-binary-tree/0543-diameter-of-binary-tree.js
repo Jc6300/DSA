@@ -10,27 +10,32 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var diameterOfBinaryTree = function(root) {
-    let diameter = 0;
+class TreeNode {
+  constructor(val, left = null, right = null) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
+}
 
-    const longestPath = (node) => {
-        if (node === null) {
-            return 0;
-        }
-        // recursively find the longest path in
-        // both left child and right child
-        let leftPath = longestPath(node.left);
-        let rightPath = longestPath(node.right);
+const diameterOfBinaryTree = function (root) {
+  let diameter = 0;
 
-        // update the diameter if left_path plus right_path is larger
-        diameter = Math.max(diameter, leftPath + rightPath);
+  const dfs = (node) => {
+    if (!node) return 0;
 
-        // return the longest one between left_path and right_path;
-        // remember to add 1 for the path connecting the node and its parent
-        return Math.max(leftPath, rightPath) + 1;
-    }
+    // Recursively calculate the depth of the left and right subtrees
+    const leftDepth = dfs(node.left);
+    const rightDepth = dfs(node.right);
 
-    longestPath(root);
+    // Update the diameter at each node
+    diameter = Math.max(diameter, leftDepth + rightDepth);
 
-    return diameter;
+    // Return the depth of the subtree rooted at this node
+    return 1 + Math.max(leftDepth, rightDepth);
+  };
+
+  dfs(root);
+
+  return diameter;
 };
