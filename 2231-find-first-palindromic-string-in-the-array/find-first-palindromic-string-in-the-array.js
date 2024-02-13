@@ -2,9 +2,20 @@
  * @param {string[]} words
  * @return {string}
  */
-let firstPalindrome = function(words) {
-    for (const word of words){
-        if (word === word.split('').reverse().join('')) return word
+ function firstPalindrome(words) {
+    // Helper function to check if a word is a palindrome
+    function isPalindrome(word) {
+        return word === word.split('').reverse().join('');
     }
-    return ''
-};
+
+    // Iterate over the words
+    for (let word of words) {
+        // If the word is a palindrome, return it
+        if (isPalindrome(word)) {
+            return word;
+        }
+    }
+
+    // If no palindromic word is found, return an empty string
+    return '';
+}
