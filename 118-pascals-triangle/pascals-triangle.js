@@ -2,28 +2,15 @@
  * @param {number} numRows
  * @return {number[][]}
  */
-const generate = (numRows) => {
-     const triangle = [];
+const generate = function(numRows) {
+    const triangle = []
 
-
-  triangle.push([1]);
-
-
-  for (let i = 1; i < numRows; i++) {
-    const row = [];
-
-    row.push(1);
-
-  
-    for (let j = 1; j < i; j++) {
-      row.push(triangle[i - 1][j - 1] + triangle[i - 1][j]);
+    for(let i =0; i<numRows; i++){
+        const row = new Array(i + 1).fill(1)
+        for(let j = 1; j < i; j++){
+            row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j]
+        }
+        triangle.push(row)
     }
-
-
-    row.push(1);
-
-    triangle.push(row);
-  }
-
-  return triangle;
+    return triangle
 };
