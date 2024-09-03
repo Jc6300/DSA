@@ -3,12 +3,20 @@
  * @param {number} k
  * @return {number}
  */
-var getLucky = function(s, k) {
- num = s.replace(/[a-z]/g, (match)=> match.charCodeAt(0) - 96)
-
-    for(let i = 0; i < k; i++){
-        num = num.toString().split('').reduce((sum, digit) => sum + parseInt(digit),0)
+var getLucky = function (s, k) {
+    let arr = ""
+    for (let i = 0; i < s.length; i++) {
+        arr += (s.charCodeAt(i) - 96).toString()
     }
-    return num
+    while (k > 0) {
+        let sum = 0
+        for (let i = 0; i < arr.length; i++) {
+            sum += Number(arr[i])
+        }
+        arr = sum.toString()
+        if (sum < 10) break
+        k--
+    }
+    return arr
 };
  
