@@ -4,14 +4,16 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    const prevMap = new Map()
+    const finalArray = []
+    const objIndices = {}
 
     for(let i = 0; i < nums.length; i++){
-        const diff = target - nums[i]
-        if(prevMap.has(diff)){
-            return [prevMap.get(diff), i]
+        if(objIndices.hasOwnProperty( target - nums[i])){
+            finalArray.push(objIndices[target - nums[i]])
+            finalArray.push(i)
+        }else {
+            objIndices[nums[i]] = i
         }
-        prevMap.set(nums[i],i)
     }
-    return []
-};
+        return finalArray
+    }
