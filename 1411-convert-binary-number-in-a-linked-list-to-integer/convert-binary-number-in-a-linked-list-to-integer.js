@@ -9,11 +9,11 @@
  * @param {ListNode} head
  * @return {number}
  */
-const getDecimalValue = (head) => {
-    let num = 0;
-    while (head !== null) {
-      num = num * 2 + head.val;
-        head = head.next;
+var getDecimalValue = function(head) {
+    let sum = 0
+    while(head !== null){
+        sum = sum * 2 + head.val
+        head = head.next
     }
-    return num;
+    return sum
 };
