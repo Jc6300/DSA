@@ -4,16 +4,13 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    const finalArray = []
-    const objIndices = {}
+    const map = new Map()
 
-    for(let i = 0; i < nums.length; i++){
-        if(objIndices.hasOwnProperty( target - nums[i])){
-            finalArray.push(objIndices[target - nums[i]])
-            finalArray.push(i)
-        }else {
-            objIndices[nums[i]] = i
+        for(let i = 0; i < nums.length; i++){
+            let complement = target - nums[i]
+            if(map.has(complement)){
+return [map.get(complement), i].sort((a,b) => a - b)
+            }
+            map.set(nums[i], i)
         }
-    }
-        return finalArray
     }
