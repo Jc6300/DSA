@@ -1,16 +1,36 @@
 var sortArray = function(nums) {
-    let counting = new Array(2 * 50000 + 1).fill(0);
-    for (let num of nums) {
-        counting[num + 50000]++;
+   const mergeSort = (arr, left, right) => {
+            if (right - left <= 1) return;
+
+            const mid = Math.floor((left + right) / 2);
+
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid, right);
+
+            merge(arr, left, mid, right);
+        };
+
+   
+        const merge = (arr, left, mid, right) => {
+            let i = left, j = mid;
+            const temp = [];
+
+            while (i < mid && j < right) {
+                if (arr[i] <= arr[j]) {
+                    temp.push(arr[i++]);
+                } else {
+                    temp.push(arr[j++]);
+                }
+            }
+
+            while (i < mid) temp.push(arr[i++]);
+            while (j < right) temp.push(arr[j++]);
+
+            for (let k = 0; k < temp.length; k++) {
+                arr[left + k] = temp[k];
+            }
+        };
+
+        mergeSort(nums, 0, nums.length);
+        return nums;
     }
-    let writeInd = 0;
-    for (let numberInd = 0; numberInd < counting.length; numberInd++) {
-        let freq = counting[numberInd];
-        while (freq != 0) {
-            nums[writeInd] = numberInd - 50000;
-            writeInd++;
-            freq--;
-        }
-    }
-    return nums;
-};
