@@ -4,16 +4,26 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-
+   //if strings are not the same length they cant be anagrams
         if(s.length !== t.length) return false
-        const count = new Array(26).fill(0)
-
-        for(let i = 0; i < s.length; i++){
-            count[s.charCodeAt(i) - 97]++
-            count[t.charCodeAt(i) - 97]--
-        }
-        for(let c of count){
-            if(c !== 0) return false
-        }
-        return true
+        
+// creates objects to count char frequencies
+        const countS = {}
+        const countT = {}
+// loop over each character in both strings
+for(let i =0; i < s.length; i++){
+ // Increment the count for the character in string s
+    countS[s[i]] = (countS[s[i]] || 0) + 1
+  // Increment the count for the character in string t
+    countT[t[i]] = (countT[t[i]] || 0) + 1
+}
+// Compare the character counts between the two strings
+for(const key in countS){
+ // If any character count doesn't match, they're not anagrams
+    if(countS[key] !== countT[key]){
+        return false
+    }
+}
+// Char counts match
+return true
 };
