@@ -12,6 +12,6 @@ var containsDuplicate = function(nums) {
         // if we haven't seen the number, add it to the set
         seen.add(num)
     }
-    // f no duplicates were found, return false
+    // if no duplicates were found, return false
     return false
 };
